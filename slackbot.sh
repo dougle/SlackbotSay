@@ -65,8 +65,8 @@ done
 [[ "$integration_url" =~ ^https?\:\/\/ ]] || integration_url="http://$integration_url"
 channel=$(echo "$channel" | sed -r 's/^(#|%23)//g' | tr -cd '[[:alnum:]]-_')
 
-#from_slack=$(curl --data "$message" "${integration_url}&channel=%23${channel}")
-echo "curl --data \"$message\" \"${integration_url}&channel=%23${channel}\""
+from_slack=$(curl --data "$message" "${integration_url}&channel=\%23${channel}")
+#echo "curl --data \"$message\" \"${integration_url}&channel=%23${channel}\""
 
 [[ -n "$from_slack" ]] && echo "$from_slack" && exit 2
 
